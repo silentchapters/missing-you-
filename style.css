@@ -209,8 +209,8 @@ body {
 
 .watch-chain {
     position: absolute;
-    top: 35px;
-    left: calc(50% + 85px);
+    top: 75px;
+    left: calc(50% + 65px);
     width: 30px;
 
     display: flex;
