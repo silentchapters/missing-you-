@@ -132,3 +132,37 @@ body {
         inset 0 3px 10px rgba(100, 65, 25, 0.25);
 }
 
+/* WATCH NUMERALS */
+
+.watch-number {
+    position: absolute;
+    color: #76532d;
+    font-family: Georgia, serif;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.number-12 {
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.number-3 {
+    right: 9px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.number-6 {
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.number-9 {
+    left: 9px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
