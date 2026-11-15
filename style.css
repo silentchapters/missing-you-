@@ -166,3 +166,39 @@ body {
     transform: translateY(-50%);
 }
 
+/* WATCH HANDS */
+
+.watch-hand {
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    transform-origin: bottom center;
+    border-radius: 10px;
+    background: #654322;
+}
+
+.hour-hand {
+    width: 5px;
+    height: 43px;
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.minute-hand {
+    width: 3px;
+    height: 60px;
+    transform: translateX(-50%) rotate(135deg);
+}
+
+.watch-center {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: #a87936;
+    border: 2px solid #f5d99a;
+    z-index: 2;
+}
+
