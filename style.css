@@ -202,3 +202,45 @@ body {
     z-index: 2;
 }
 
+
+/* POCKET WATCH CHAIN */
+
+.watch-chain {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+
+    width: 5px;
+    height: 95px;
+
+    transform: translateX(-50%);
+
+    background: linear-gradient(
+        to right,
+        #94652f,
+        #f5d99a,
+        #b7833f
+    );
+
+    border-radius: 10px;
+
+    box-shadow:
+        2px 2px 4px rgba(70, 40, 15, 0.25);
+}
+
+.watch-chain::before {
+    content: "";
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 17px;
+    height: 17px;
+
+    border: 4px solid #b7833f;
+    border-radius: 50%;
+
+    background: #f5d99a;
+}
+
