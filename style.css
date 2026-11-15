@@ -21,3 +21,41 @@ body {
     align-items: center;
     padding: 30px;
 }
+
+.letter-page {
+    position: relative;
+    display: grid;
+    grid-template-columns: 38% 62%;
+
+    width: 100%;
+    max-width: 1100px;
+    min-height: 680px;
+
+    padding: 35px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff2d9,
+            #f1d9b5,
+            #f8e8ce
+        );
+
+    border: 1px solid rgba(133, 91, 53, 0.4);
+    border-radius: 5px;
+
+    box-shadow:
+        0 20px 50px rgba(70, 42, 20, 0.3),
+        inset 0 0 35px rgba(160, 112, 65, 0.15);
+}
+
+.decoration-area {
+    position: relative;
+    min-height: 600px;
+}
+
+.writing-area {
+    position: relative;
+    padding: 25px;
+    min-height: 600px;
+}
