@@ -59,3 +59,27 @@ body {
     padding: 25px;
     min-height: 600px;
 }
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 12px;
+        align-items: flex-start;
+    }
+
+    .letter-page {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 20px;
+    }
+
+    .decoration-area {
+        min-height: 350px;
+    }
+
+    .writing-area {
+        min-height: 400px;
+        padding: 15px;
+    }
+
+}
