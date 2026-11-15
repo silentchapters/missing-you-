@@ -244,3 +244,23 @@ body {
     background: #f5d99a;
 }
 
+.watch-chain::after {
+    content: "";
+    position: absolute;
+
+    top: 35px;
+    left: -18px;
+
+    width: 90px;
+    height: 160px;
+
+    border-right: 4px solid #b7833f;
+    border-bottom: 4px solid #b7833f;
+
+    border-radius: 0 0 70% 0;
+
+    filter: drop-shadow(
+        2px 2px 2px rgba(70, 40, 15, 0.25)
+    );
+}
+
