@@ -207,21 +207,21 @@ body {
 /* REALISTIC POCKET WATCH CHAIN */
 
 
+
 .watch-chain {
     position: absolute;
-    top: 75px;
-    left: calc(50% + 65px);
+    top: 35px;
+    left: 50%;
     width: 30px;
 
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    transform: rotate(-25deg);
-    transform-origin: top center;
-
+    transform: translateX(-50%);
     z-index: 3;
 }
+
 
 
 .watch-chain span {
