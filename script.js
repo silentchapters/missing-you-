@@ -1,75 +1,157 @@
 
-/* ===== A LITTLE MAGIC FOR MAMMA ===== */
-
-// Find the message area on our webpage.
-const messageElement = document.getElementById("message");
-
-// The words we want to share with mamma.
-const message = "If my missing you could become an ocean, mamma, the world would never find its shore. 💜";
-
-// Start with an empty message.
-messageElement.textContent = "";
-
-// Reveal the message one character at a time.
-let letterIndex = 0;
-
-function revealMessage() {
-    if (letterIndex < message.length) {
-        messageElement.textContent += message.charAt(letterIndex);
-        letterIndex++;
-
-        setTimeout(revealMessage, 65);
-    }
-}
-
-// Wait a little before the words begin to appear.
-setTimeout(revealMessage, 1800);
+/* =====================================
+   A PLACE WHERE WE CAN BREATHE
+   A little magic for Mamma
+===================================== */
 
 
-// ===== SHOOTING STAR =====
+/* ===== 1. OPENING BUTTON ===== */
+
+const beginButton = document.getElementById("beginButton");
+const messageSection = document.getElementById("messageSection");
+
+beginButton.addEventListener("click", () => {
+
+    messageSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+});
+
+
+/* ===== 2. GENTLE SECTION REVEALS ===== */
+
+const sections = document.querySelectorAll(
+    ".message-section, .understanding-section, .possibility-section, .final-section"
+);
+
+sections.forEach(section => {
+
+    section.style.opacity = "0";
+    section.style.transform = "translateY(35px)";
+    section.style.transition =
+        "opacity 1.2s ease, transform 1.2s ease";
+
+});
+
+const revealObserver = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+
+            revealObserver.unobserve(entry.target);
+
+        }
+
+    });
+
+}, {
+    threshold: 0.15
+});
+
+sections.forEach(section => {
+    revealObserver.observe(section);
+});
+
+
+/* ===== 3. SHOOTING STARS ===== */
 
 function createShootingStar() {
-    const sky = document.querySelector(".sky");
-    const shootingStar = document.createElement("div");
 
-    shootingStar.style.position = "absolute";
-    shootingStar.style.top = Math.random() * 55 + "%";
-    shootingStar.style.left = Math.random() * 75 + "%";
-    shootingStar.style.width = "3px";
-    shootingStar.style.height = "3px";
-    shootingStar.style.borderRadius = "50%";
-    shootingStar.style.background = "#ffffff";
-    shootingStar.style.boxShadow = "0 0 10px 3px #f5ddff";
-    shootingStar.style.pointerEvents = "none";
-    shootingStar.style.zIndex = "1";
+    const sky = document.querySelector(".ambient-background");
 
-    sky.appendChild(shootingStar);
+    if (!sky) return;
 
-    shootingStar.animate(
-        [
-            {
-                transform: "translate(0, 0)",
-                opacity: 0
-            },
-            {
-                transform: "translate(-45px, 35px)",
-                opacity: 1
-            },
-            {
-                transform: "translate(-150px, 110px)",
-                opacity: 0
-            }
-        ],
+    const star = document.createElement("div");
+
+    star.style.position = "absolute";
+    star.style.top = Math.random() * 65 + "%";
+    star.style.left = Math.random() * 85 + "%";
+
+    star.style.width = "3px";
+    star.style.height = "3px";
+    star.style.borderRadius = "50%";
+
+    star.style.background = "#ffffff";
+
+    star.style.boxShadow =
+        "0 0 12px 3px rgba(220, 195, 255, 0.9)";
+
+    star.style.pointerEvents = "none";
+    star.style.zIndex = "1";
+
+    sky.appendChild(star);
+
+    star.animate([
+
         {
-            duration: 1200,
-            easing: "ease-out"
+            transform: "translate(0, 0)",
+            opacity: 0
+        },
+
+        {
+            transform: "translate(-50px, 40px)",
+            opacity: 1
+        },
+
+        {
+            transform: "translate(-160px, 120px)",
+            opacity: 0
         }
-    );
+
+    ], {
+
+        duration: 1500,
+        easing: "ease-out"
+
+    });
 
     setTimeout(() => {
-        shootingStar.remove();
-    }, 1300);
+        star.remove();
+    }, 1600);
+
 }
 
-// A shooting star appears occasionally.
-setInterval(createShootingStar, 4500);
+
+/* A shooting star appears occasionally. */
+
+setInterval(createShootingStar, 5000);
+
+
+/* ===== 4. FINAL SECTION GLOW ===== */
+
+const finalSection = document.querySelector(".final-section");
+
+const finalObserver = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+            finalSection.classList.add("final-glow-active");
+
+            finalObserver.unobserve(finalSection);
+
+        }
+
+    });
+
+}, {
+    threshold: 0.4
+});
+
+finalObserver.observe(finalSection);
+
+
+/* ===== 5. RESPECT REDUCED MOTION ===== */
+
+if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+
+    document.documentElement.style.scrollBehavior = "auto";
+
+}
