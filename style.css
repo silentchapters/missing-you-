@@ -407,3 +407,19 @@ section h2 {
     }
 
 }
+
+/* FINAL MESSAGE — SOFT LAVENDER GLOW */
+
+.final-section {
+    transition: background 2s ease;
+}
+
+.final-section.final-glow-active {
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(176, 137, 226, 0.30),
+            transparent 70%
+        ),
+        #100d20;
+}
