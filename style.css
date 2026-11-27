@@ -423,3 +423,138 @@ section h2 {
         ),
         #100d20;
 }
+
+/* =====================================
+   FOUR FOUNDATIONS
+===================================== */
+
+.reflection-section {
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(139, 103, 184, 0.17),
+            transparent 70%
+        ),
+        #171228;
+}
+
+.reflection-intro {
+    max-width: 600px;
+    margin: 0 auto 45px;
+
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.9;
+}
+
+.reflection-grid {
+    max-width: 750px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.reflection-card {
+    border: 1px solid rgba(209, 187, 242, 0.20);
+    border-radius: 16px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    overflow: hidden;
+
+    transition:
+        border-color 0.4s ease,
+        background 0.4s ease,
+        transform 0.4s ease;
+}
+
+.reflection-card:hover {
+    border-color: rgba(209, 187, 242, 0.55);
+    background: rgba(190, 161, 235, 0.075);
+    transform: translateY(-4px);
+}
+
+.reflection-toggle {
+    width: 100%;
+    min-height: 85px;
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    border: none;
+    background: transparent;
+
+    color: var(--white);
+    font-size: 18px;
+    text-align: left;
+
+    cursor: pointer;
+}
+
+.reflection-icon {
+    color: var(--pink);
+    font-size: 25px;
+}
+
+.toggle-symbol {
+    margin-left: auto;
+
+    color: var(--lavender);
+    font-size: 24px;
+
+    transition: transform 0.35s ease;
+}
+
+.reflection-toggle[aria-expanded="true"] .toggle-symbol {
+    transform: rotate(45deg);
+}
+
+.reflection-content {
+    padding: 0 22px 22px;
+    animation: fadeUp 0.5s ease both;
+}
+
+.reflection-content p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.9;
+    text-align: left;
+}
+
+.reflection-closing {
+    max-width: 600px;
+    margin: 45px auto 0;
+
+    color: var(--soft-lavender);
+    font-size: 17px;
+    font-style: italic;
+    line-height: 1.9;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .reflection-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .reflection-toggle {
+        min-height: 75px;
+        font-size: 17px;
+    }
+
+    .reflection-intro {
+        font-size: 15px;
+    }
+
+    .reflection-content p {
+        font-size: 14px;
+    }
+
+}
