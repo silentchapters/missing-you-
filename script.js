@@ -213,3 +213,36 @@ if (fullMoonButton && moonHiddenContent) {
     });
 
 }
+/* ===== YES / NO RESPONSE INTERACTION ===== */
+
+const yesButton = document.getElementById("yesButton");
+const noButton = document.getElementById("noButton");
+
+const yesResponse = document.getElementById("yesResponse");
+const noResponse = document.getElementById("noResponse");
+const moonBibleVerse = document.getElementById("moonBibleVerse");
+
+
+function revealMoonChoice(choice) {
+
+    if (!yesResponse || !noResponse || !moonBibleVerse) return;
+
+    yesResponse.hidden = choice !== "yes";
+    noResponse.hidden = choice !== "no";
+
+    moonBibleVerse.hidden = false;
+}
+
+
+if (yesButton) {
+    yesButton.addEventListener("click", () => {
+        revealMoonChoice("yes");
+    });
+}
+
+
+if (noButton) {
+    noButton.addEventListener("click", () => {
+        revealMoonChoice("no");
+    });
+}
