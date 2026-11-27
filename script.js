@@ -10,14 +10,14 @@
 const beginButton = document.getElementById("beginButton");
 const messageSection = document.getElementById("messageSection");
 
-beginButton.addEventListener("click", () => {
-
-    messageSection.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
+if (beginButton && messageSection) {
+    beginButton.addEventListener("click", () => {
+        messageSection.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
     });
-
-});
+}
 
 
 /* ===== 2. GENTLE SECTION REVEALS ===== */
@@ -25,7 +25,8 @@ beginButton.addEventListener("click", () => {
 const revealSections = document.querySelectorAll(
     ".message-section, .understanding-section, .possibility-section, .reflection-section, .final-section"
 );
-sections.forEach(section => {
+
+revealSections.forEach(section => {
 
     section.style.opacity = "0";
     section.style.transform = "translateY(35px)";
@@ -53,7 +54,7 @@ const revealObserver = new IntersectionObserver((entries) => {
     threshold: 0.15
 });
 
-sections.forEach(section => {
+revealSections.forEach(section => {
     revealObserver.observe(section);
 });
 
@@ -116,9 +117,6 @@ function createShootingStar() {
 
 }
 
-
-/* A shooting star appears occasionally. */
-
 setInterval(createShootingStar, 5000);
 
 
@@ -126,25 +124,29 @@ setInterval(createShootingStar, 5000);
 
 const finalSection = document.querySelector(".final-section");
 
-const finalObserver = new IntersectionObserver((entries) => {
+if (finalSection) {
 
-    entries.forEach(entry => {
+    const finalObserver = new IntersectionObserver((entries) => {
 
-        if (entry.isIntersecting) {
+        entries.forEach(entry => {
 
-            finalSection.classList.add("final-glow-active");
+            if (entry.isIntersecting) {
 
-            finalObserver.unobserve(finalSection);
+                finalSection.classList.add("final-glow-active");
 
-        }
+                finalObserver.unobserve(finalSection);
 
+            }
+
+        });
+
+    }, {
+        threshold: 0.4
     });
 
-}, {
-    threshold: 0.4
-});
+    finalObserver.observe(finalSection);
 
-finalObserver.observe(finalSection);
+}
 
 
 /* ===== 5. RESPECT REDUCED MOTION ===== */
@@ -155,6 +157,7 @@ if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
 
 }
 
+
 /* =====================================
    6. INTERACTIVE REFLECTION CARDS
 ===================================== */
@@ -172,55 +175,22 @@ reflectionButtons.forEach(button => {
         const isOpen =
             button.getAttribute("aria-expanded") === "true";
 
-        // Close the other cards first.
+        // Close all cards first.
         reflectionButtons.forEach(otherButton => {
 
             otherButton.setAttribute("aria-expanded", "false");
-
             otherButton.nextElementSibling.hidden = true;
 
         });
 
-        // Open the selected card if it was previously closed.
+        // Open the selected card.
         if (!isOpen) {
 
             button.setAttribute("aria-expanded", "true");
-
             content.hidden = false;
 
         }
 
     });
 
-});
-
-/* =====================================
-   6. INTERACTIVE REFLECTION CARDS
-===================================== */
-
-const reflectionButtons = document.querySelectorAll(
-    ".reflection-toggle"
-);
-
-reflectionButtons.forEach(button => {
-    button.addEventListener("click", () => {
-
-        const content = button.nextElementSibling;
-
-        const isOpen =
-            button.getAttribute("aria-expanded") === "true";
-
-        // Close all cards first
-        reflectionButtons.forEach(otherButton => {
-            otherButton.setAttribute("aria-expanded", "false");
-            otherButton.nextElementSibling.hidden = true;
-        });
-
-        // Open the selected card
-        if (!isOpen) {
-            button.setAttribute("aria-expanded", "true");
-            content.hidden = false;
-        }
-
-    });
 });
