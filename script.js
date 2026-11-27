@@ -23,7 +23,7 @@ beginButton.addEventListener("click", () => {
 /* ===== 2. GENTLE SECTION REVEALS ===== */
 
 const sections = document.querySelectorAll(
-    ".message-section, .understanding-section, .possibility-section, .final-section"
+   ".message-section, .understanding-section, .possibility-section, .reflection-section, .final-section"
 );
 
 sections.forEach(section => {
@@ -155,3 +155,42 @@ if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     document.documentElement.style.scrollBehavior = "auto";
 
 }
+
+/* =====================================
+   6. INTERACTIVE REFLECTION CARDS
+===================================== */
+
+const reflectionButtons = document.querySelectorAll(
+    ".reflection-toggle"
+);
+
+reflectionButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        const content = button.nextElementSibling;
+
+        const isOpen =
+            button.getAttribute("aria-expanded") === "true";
+
+        // Close the other cards first.
+        reflectionButtons.forEach(otherButton => {
+
+            otherButton.setAttribute("aria-expanded", "false");
+
+            otherButton.nextElementSibling.hidden = true;
+
+        });
+
+        // Open the selected card if it was previously closed.
+        if (!isOpen) {
+
+            button.setAttribute("aria-expanded", "true");
+
+            content.hidden = false;
+
+        }
+
+    });
+
+});
