@@ -1,301 +1,409 @@
 
+/* =====================================
+   A PLACE WHERE WE CAN BREATHE
+   A little place for Mamma
+===================================== */
+
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --night: #100d20;
+    --deep-purple: #1c1632;
+    --lavender: #c8b5ee;
+    --soft-lavender: #e6dafa;
+    --white: #fffaff;
+    --muted: #c0b6d2;
+    --pink: #e9b9d7;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    margin: 0;
+    background: var(--night);
+    color: var(--white);
+    font-family: Georgia, "Times New Roman", serif;
+    overflow-x: hidden;
+}
+
+button {
+    font: inherit;
+}
+
+/* =====================================
+   MAIN LAYOUT
+===================================== */
+
+.sanctuary {
+    width: 100%;
+    overflow: hidden;
+}
+
+section {
+    position: relative;
+    width: 100%;
+    padding: 110px 24px;
+    text-align: center;
+}
+
+/* =====================================
+   WELCOME SECTION
+===================================== */
+
+.welcome-section {
     min-height: 100vh;
-    font-family: "Lucida Calligraphy", cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 45%,
+            rgba(105, 77, 150, 0.30),
+            transparent 55%
+        ),
+        linear-gradient(
+            160deg,
+            #100d20,
+            #1b1531,
+            #110e21
+        );
+}
+
+.ambient-background {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.glow {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    left: 50%;
+    top: 45%;
+
+    transform: translate(-50%, -50%);
+
+    background: rgba(181, 145, 239, 0.12);
+    filter: blur(100px);
+    border-radius: 50%;
+}
+
+.stars {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        radial-gradient(2px 2px at 20% 30%, white, transparent),
+        radial-gradient(1px 1px at 70% 20%, white, transparent),
+        radial-gradient(2px 2px at 80% 65%, white, transparent),
+        radial-gradient(1px 1px at 35% 75%, white, transparent),
+        radial-gradient(2px 2px at 55% 50%, white, transparent),
+        radial-gradient(1px 1px at 90% 40%, white, transparent);
+
+    background-size: 350px 350px;
+    opacity: 0.65;
+
+    animation: twinkle 5s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+    from {
+        opacity: 0.3;
+    }
+
+    to {
+        opacity: 0.85;
+    }
+}
+
+.welcome-content {
+    position: relative;
+    z-index: 2;
+    max-width: 750px;
+    animation: fadeUp 1.8s ease both;
+}
+
+.eyebrow,
+.section-label {
+    color: var(--lavender);
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 5px;
+    margin-bottom: 28px;
+}
+
+.welcome-content h1 {
+    font-size: clamp(42px, 7vw, 82px);
+    font-weight: normal;
+    line-height: 1.15;
+    letter-spacing: -2px;
+
+    color: var(--white);
+
+    text-shadow:
+        0 0 35px rgba(205, 176, 255, 0.2);
+}
+
+.intro {
+    max-width: 430px;
+    margin: 30px auto 38px;
+
+    font-size: 18px;
+    line-height: 1.8;
+    color: var(--muted);
+}
+
+#beginButton {
+    padding: 16px 28px;
+
+    border: 1px solid rgba(218, 195, 255, 0.55);
+    border-radius: 50px;
+
+    background: rgba(190, 161, 235, 0.10);
+
+    color: var(--white);
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.4s ease,
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+#beginButton span {
+    margin-left: 10px;
+    color: var(--pink);
+}
+
+#beginButton:hover {
+    background: rgba(190, 161, 235, 0.23);
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 30px rgba(190, 161, 235, 0.18);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+
+    color: var(--muted);
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+}
+
+.scroll-line {
+    width: 1px;
+    height: 35px;
+
+    background: linear-gradient(
+        var(--lavender),
+        transparent
+    );
+}
+
+/* =====================================
+   MESSAGE SECTION
+===================================== */
+
+.message-section {
+    background:
+        radial-gradient(
+            ellipse at top,
+            rgba(110, 79, 151, 0.20),
+            transparent 65%
+        ),
+        #171228;
+}
+
+section h2 {
+    max-width: 850px;
+    margin: 0 auto 35px;
+
+    font-size: clamp(30px, 5vw, 48px);
+    font-weight: normal;
+    line-height: 1.3;
+}
+
+.message-card,
+.possibility-card {
+    max-width: 720px;
+    margin: 45px auto 0;
+
+    padding: 45px 38px;
+
+    border: 1px solid rgba(209, 187, 242, 0.17);
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    box-shadow:
+        0 20px 70px rgba(0, 0, 0, 0.15);
+}
+
+.message-card p,
+.possibility-card p,
+.understanding-section > p:not(.section-label),
+.final-section > p:not(.section-label) {
+    max-width: 650px;
+    margin: 0 auto 25px;
+
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 2;
+}
+
+.highlight {
+    color: var(--soft-lavender) !important;
+    font-style: italic;
+}
+
+/* =====================================
+   UNDERSTANDING SECTION
+===================================== */
+
+.understanding-section {
+    background:
+        linear-gradient(
+            180deg,
+            #171228,
+            #211832,
+            #171228
+        );
+}
+
+/* =====================================
+   POSSIBILITY SECTION
+===================================== */
+
+.possibility-section {
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(144, 104, 180, 0.16),
+            transparent 70%
+        ),
+        #171228;
+}
+
+.possibility-card {
+    background: rgba(201, 177, 238, 0.055);
+}
+
+/* =====================================
+   FINAL SECTION
+===================================== */
+
+.final-section {
+    min-height: 90vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     background:
         radial-gradient(
             ellipse at center,
-            #f7e6c9 0%,
-            #e9cda7 65%,
-            #c99d72 100%
-        );
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 30px;
+            rgba(137, 101, 185, 0.22),
+            transparent 65%
+        ),
+        #100d20;
 }
 
-.letter-page {
-    position: relative;
-    display: grid;
-    grid-template-columns: 38% 62%;
+.final-message {
+    max-width: 650px;
+    margin: 25px auto !important;
 
-    width: 100%;
-    max-width: 1100px;
-    min-height: 680px;
-
-    padding: 35px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #fff2d9,
-            #f1d9b5,
-            #f8e8ce
-        );
-
-    border: 1px solid rgba(133, 91, 53, 0.4);
-    border-radius: 5px;
-
-    box-shadow:
-        0 20px 50px rgba(70, 42, 20, 0.3),
-        inset 0 0 35px rgba(160, 112, 65, 0.15);
+    color: var(--soft-lavender) !important;
+    font-size: 21px !important;
+    font-style: italic;
+    line-height: 1.9 !important;
 }
 
-.decoration-area {
-    position: relative;
-    min-height: 600px;
+.signature {
+    margin-top: 35px;
+
+    color: var(--pink);
+    font-size: 22px;
+    font-style: italic;
+    letter-spacing: 1px;
 }
 
-.writing-area {
-    position: relative;
-    padding: 25px;
-    min-height: 600px;
-}
+/* =====================================
+   ANIMATIONS
+===================================== */
 
-@media (max-width: 700px) {
-
-    body {
-        padding: 12px;
-        align-items: flex-start;
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
     }
 
-    .letter-page {
-        grid-template-columns: 1fr;
-        min-height: auto;
-        padding: 20px;
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =====================================
+   MOBILE RESPONSIVENESS
+===================================== */
+
+@media (max-width: 600px) {
+
+    section {
+        padding: 85px 22px;
     }
 
-    .decoration-area {
-        min-height: 350px;
+    .welcome-section {
+        min-height: 100svh;
     }
 
-    .writing-area {
-        min-height: 400px;
-        padding: 15px;
+    .welcome-content h1 {
+        letter-spacing: -1px;
     }
 
-}
+    .intro {
+        font-size: 16px;
+    }
 
-/* POCKET WATCH */
+    .message-card,
+    .possibility-card {
+        padding: 30px 22px;
+    }
 
-.pocket-watch {
-    position: absolute;
-    top: 100px;
-    left: 50%;
-    transform: translateX(-50%);
+    .message-card p,
+    .possibility-card p,
+    .understanding-section > p:not(.section-label),
+    .final-section > p:not(.section-label) {
+        font-size: 16px;
+        line-height: 1.9;
+    }
 
-    width: 190px;
-    height: 190px;
-    border-radius: 50%;
+    .eyebrow,
+    .section-label {
+        letter-spacing: 3px;
+    }
 
-    background:
-        linear-gradient(
-            145deg,
-            #f5d99a,
-            #b7833f 45%,
-            #e8c27e 75%,
-            #94652f
-        );
-
-    border: 5px solid #95672f;
-
-    box-shadow:
-        0 12px 25px rgba(75, 45, 20, 0.35),
-        inset 0 3px 8px rgba(255, 255, 255, 0.65),
-        inset 0 -5px 10px rgba(80, 45, 15, 0.35);
-}
-
-.watch-face {
-    position: absolute;
-    inset: 12px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            #fff5df,
-            #ead6ad
-        );
-
-    border: 3px solid #c49a59;
-
-    box-shadow:
-        inset 0 3px 10px rgba(100, 65, 25, 0.25);
-}
-
-/* WATCH NUMERALS */
-
-.watch-number {
-    position: absolute;
-    color: #76532d;
-    font-family: Georgia, serif;
-    font-size: 17px;
-    font-weight: bold;
-}
-
-.number-12 {
-    top: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.number-3 {
-    right: 9px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.number-6 {
-    bottom: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.number-9 {
-    left: 9px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-/* WATCH HANDS */
-
-.watch-hand {
-    position: absolute;
-    left: 50%;
-    bottom: 50%;
-    transform-origin: bottom center;
-    border-radius: 10px;
-    background: #654322;
-}
-
-.hour-hand {
-    width: 5px;
-    height: 43px;
-    transform: translateX(-50%) rotate(45deg);
-}
-
-.minute-hand {
-    width: 3px;
-    height: 60px;
-    transform: translateX(-50%) rotate(135deg);
-}
-
-.watch-center {
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    background: #a87936;
-    border: 2px solid #f5d99a;
-    z-index: 2;
-}
-
-
-
-/* REALISTIC POCKET WATCH CHAIN */
-
-
-
-.watch-chain {
-    position: absolute;
-    top: 35px;
-    left: 50%;
-    width: 30px;
-
-    display: block;
-    height: 220px;
-
-    transform: translateX(-50%);
-    z-index: 3;
-}
-
-
-
-.watch-chain span {
-    position: absolute;
-    display: block;
-
-    width: 13px;
-    height: 23px;
-
-    border: 3px solid #a87936;
-    border-radius: 50%;
-
-    background: linear-gradient(
-        110deg,
-        #8f5e28,
-        #f5d99a,
-        #b7833f
-    );
-
-    box-shadow:
-        1px 2px 3px rgba(70, 40, 15, 0.3),
-        inset 1px 1px 2px rgba(255, 255, 255, 0.6);
-}
-
-.watch-chain span:nth-child(1) {
-    top: 0;
-    left: 0;
-}
-
-.watch-chain span:nth-child(2) {
-    top: 18px;
-    left: 10px;
-    transform: rotate(45deg);
-}
-
-.watch-chain span:nth-child(3) {
-    top: 37px;
-    left: 20px;
-}
-
-.watch-chain span:nth-child(4) {
-    top: 56px;
-    left: 27px;
-    transform: rotate(45deg);
-}
-
-.watch-chain span:nth-child(5) {
-    top: 75px;
-    left: 30px;
-}
-
-.watch-chain span:nth-child(6) {
-    top: 94px;
-    left: 27px;
-    transform: rotate(-45deg);
-}
-
-.watch-chain span:nth-child(7) {
-    top: 113px;
-    left: 18px;
-}
-
-.watch-chain span:nth-child(8) {
-    top: 132px;
-    left: 7px;
-    transform: rotate(-45deg);
-}
-
-.watch-chain span:nth-child(9) {
-    top: 151px;
-    left: -5px;
-}
-
-.watch-chain span:nth-child(10) {
-    top: 170px;
-    left: -12px;
-    transform: rotate(45deg);
 }
