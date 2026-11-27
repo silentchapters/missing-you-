@@ -194,3 +194,22 @@ reflectionButtons.forEach(button => {
     });
 
 });
+/* ===== FULL MOON CLICK INTERACTION ===== */
+
+const fullMoonButton = document.getElementById("fullMoonButton");
+const moonHiddenContent = document.getElementById("moonHiddenContent");
+
+if (fullMoonButton && moonHiddenContent) {
+
+    fullMoonButton.addEventListener("click", () => {
+
+        moonHiddenContent.hidden = false;
+
+        moonHiddenContent.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+    });
+
+}
