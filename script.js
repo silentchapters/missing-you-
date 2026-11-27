@@ -193,3 +193,34 @@ reflectionButtons.forEach(button => {
     });
 
 });
+
+/* =====================================
+   6. INTERACTIVE REFLECTION CARDS
+===================================== */
+
+const reflectionButtons = document.querySelectorAll(
+    ".reflection-toggle"
+);
+
+reflectionButtons.forEach(button => {
+    button.addEventListener("click", () => {
+
+        const content = button.nextElementSibling;
+
+        const isOpen =
+            button.getAttribute("aria-expanded") === "true";
+
+        // Close all cards first
+        reflectionButtons.forEach(otherButton => {
+            otherButton.setAttribute("aria-expanded", "false");
+            otherButton.nextElementSibling.hidden = true;
+        });
+
+        // Open the selected card
+        if (!isOpen) {
+            button.setAttribute("aria-expanded", "true");
+            content.hidden = false;
+        }
+
+    });
+});
