@@ -246,3 +246,31 @@ if (noButton) {
         revealMoonChoice("no");
     });
 }
+/* ===== A THOUSAND YEARS MUSIC CONTROL ===== */
+
+const backgroundMusic = document.getElementById("backgroundMusic");
+const musicButton = document.getElementById("musicButton");
+
+if (backgroundMusic && musicButton) {
+
+    musicButton.addEventListener("click", () => {
+
+        if (backgroundMusic.paused) {
+
+            backgroundMusic.play();
+
+            musicButton.textContent = "⏸ Pause Music";
+
+        } else {
+
+            backgroundMusic.pause();
+
+            musicButton.textContent = "▶ Play A Thousand Years";
+
+        }
+
+    });
+
+}
+
+/* ===== END MUSIC CONTROL ===== */
