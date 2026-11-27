@@ -558,3 +558,144 @@ section h2 {
     }
 
 }
+
+/* =====================================
+   FULL MOON QUESTION SECTION
+===================================== */
+
+.moon-question-section {
+    position: relative;
+    padding: 100px 20px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.moon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto 50px;
+}
+
+.full-moon {
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 35% 30%,
+            #ffffff 0%,
+            #f4efff 35%,
+            #d8c9ff 70%,
+            #a994d8 100%);
+    box-shadow:
+        0 0 25px rgba(230, 215, 255, 0.8),
+        0 0 60px rgba(190, 160, 255, 0.55),
+        0 0 110px rgba(160, 130, 255, 0.3);
+    animation: moonGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes moonGlow {
+    from {
+        box-shadow:
+            0 0 25px rgba(230, 215, 255, 0.7),
+            0 0 60px rgba(190, 160, 255, 0.4);
+    }
+
+    to {
+        box-shadow:
+            0 0 40px rgba(230, 215, 255, 0.95),
+            0 0 90px rgba(190, 160, 255, 0.7),
+            0 0 130px rgba(160, 130, 255, 0.4);
+    }
+}
+
+.moon-question-section h2 {
+    color: #e9ddff;
+    margin-bottom: 20px;
+}
+
+.moon-question {
+    color: #f4efff;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    margin: 20px auto 35px;
+}
+
+.moon-choice-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.moon-choice-buttons button {
+    min-width: 120px;
+    padding: 13px 30px;
+    border: 1px solid rgba(225, 210, 255, 0.5);
+    border-radius: 30px;
+    background: rgba(190, 160, 255, 0.12);
+    color: #ffffff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.moon-choice-buttons button:hover {
+    background: rgba(190, 160, 255, 0.3);
+    box-shadow: 0 0 20px rgba(190, 160, 255, 0.4);
+    transform: translateY(-3px);
+}
+
+.moon-response {
+    margin: 35px auto 20px;
+    color: #f4efff;
+    animation: moonReveal 1.2s ease;
+}
+
+.moon-response h3 {
+    font-size: 2rem;
+    color: #f1dfff;
+}
+
+.moon-bible-verse {
+    margin-top: 60px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(225, 210, 255, 0.2);
+    color: #e9ddff;
+    animation: moonReveal 1.5s ease;
+}
+
+.moon-bible-verse p {
+    font-size: 1.15rem;
+    font-style: italic;
+}
+
+.moon-bible-verse span {
+    color: #bda9e8;
+    font-size: 0.9rem;
+}
+
+@keyframes moonReveal {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* MOBILE ADJUSTMENT */
+
+@media (max-width: 600px) {
+    .full-moon {
+        width: 150px;
+        height: 150px;
+    }
+
+    .moon-question {
+        font-size: 1.05rem;
+    }
+}
