@@ -699,3 +699,10 @@ section h2 {
         font-size: 1.05rem;
     }
 }
+/* ===== MOON RESPONSE VISIBILITY FIX ===== */
+
+.moon-response[hidden],
+.moon-bible-verse[hidden],
+#moonHiddenContent[hidden] {
+    display: none !important;
+}
