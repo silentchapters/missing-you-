@@ -22,10 +22,9 @@ beginButton.addEventListener("click", () => {
 
 /* ===== 2. GENTLE SECTION REVEALS ===== */
 
-const sections = document.querySelectorAll(
-   ".message-section, .understanding-section, .possibility-section, .reflection-section, .final-section"
+const revealSections = document.querySelectorAll(
+    ".message-section, .understanding-section, .possibility-section, .reflection-section, .final-section"
 );
-
 sections.forEach(section => {
 
     section.style.opacity = "0";
